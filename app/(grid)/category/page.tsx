@@ -14,7 +14,25 @@ const Page = () => {
   const [games, setGames] = useState<Game[]>([]);
   const idGame: Array<string> = [];
   const [gameFromId, setGameFromId] = useState<object[]>([]);
+  const [screenWidth, setScreenWidth] = useState(0)
+  const [slidesInSmallScreen,setSlidesInSmallScreen] = useState(0)
   const width: number = 0;
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    if (screenWidth < 768) {
+      setSlidesInSmallScreen(2)
+    } else{
+      setSlidesInSmallScreen(3)
+    }
+    if (screenWidth < 640) {
+      setSlidesInSmallScreen(1)
+    }
+  })
   useEffect(() => {
     const fetchPlatforms = async () => {
       const allPlatforms = await getAllPlatforms();
@@ -121,7 +139,7 @@ const Page = () => {
             autoplay={{ delay: 3000 }}
             modules={[Autoplay]}
             spaceBetween={15}
-            slidesPerView={3}
+            slidesPerView={slidesInSmallScreen}
             className={`w-full`}
           >
             {gameFromId?.map((game: any) => {

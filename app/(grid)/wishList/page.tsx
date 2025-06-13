@@ -4,11 +4,11 @@ import { BsHeartFill } from "react-icons/bs";
 const page = () => {
   return (
     <div>
-      <div className="flex min-h-[30%] items-center gap-2 w-[40vw] ">
-        <h1 className="text-4xl text-white font-bold py-7">My WishList</h1>
+      <div className="flex min-h-[30%] items-center gap-2 lg:w-[40vw] w-full ">
+        <h1 className="lg:text-4xl text-2xl text-white font-bold py-7">My WishList</h1>
         <BsHeartFill className="text-3xl text-red-600 font-bold" />
       </div>
-      <div className="h-[70%] flex flex-col pt-[60px] items-center justify-center">
+      <div className="h-[70%] flex flex-col pt-4 lg:pt-[60px] items-center justify-center">
         <p className="text-3xl text-white font-bold text-center">
             You have not added anything to your wishlist yet !
         </p>

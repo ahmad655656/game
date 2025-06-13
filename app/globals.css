@@ -89,3 +89,14 @@
     @apply bg-background text-foreground;
   }
 }
+select {
+  -webkit-appearance: none; /* إزالة الأشكال الأصلية في المتصفحات */
+  -moz-appearance: none; /* إزالة الأشكال الأصلية في المتصفحات */
+  appearance: none; /* إزالة الأشكال الأصلية في المتصفحات */
+  overflow: hidden; /* إخفاء الشريط الجانبي */
+  scrollbar-width: none; /* إخفاء شريط التمرير في فايرفوكس */
+}
+
+select::-webkit-scrollbar {
+  display: none; /* إخفاء شريط التمرير في جوجل كروم */
+}

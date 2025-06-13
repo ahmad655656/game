@@ -65,7 +65,7 @@ const SwiperCards = ({
               className={`${
                 swiper?.realIndex === i &&
                 "-translate-y-5 border-rose-500 z-10 border opacity-90 shadow-md"
-              } cursor-pointer hover:-translate-y-7 hover:opacity-90 hover:shadow-md hover:z-10 duration-300 transition-all ease-in-out rounded-xl overflow-hidden lg:w-full w-[40%]  max-w-lg h-40 relative`}
+              } cursor-pointer hover:-translate-y-7 hover:opacity-90 hover:shadow-md hover:z-10 duration-300 transition-all ease-in-out rounded-xl overflow-hidden lg:w-full w-[90%]  max-w-lg h-40 relative`}
             >
               {swiper?.realIndex === i && (
                 <div

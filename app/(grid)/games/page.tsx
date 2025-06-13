@@ -102,7 +102,7 @@ const Page: React.FC = () => {
             x: 0,
             transition: { duration: 0.5, delay: 0.4 },
           }}
-          className="text-4xl mt-5 text-white font-bold"
+          className="lg:text-4xl text-2xl mt-5 text-white font-bold"
         >
           Games From Genres
         </MotionItem>
@@ -111,15 +111,15 @@ const Page: React.FC = () => {
             <form className="max-w-sm mx-auto">
               <label
                 htmlFor="countries"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-center text-white/50 dark:text-white"
               >
-                Select an Generes
+                Select a Genre
               </label>
               <select
                 onChange={(e) => handleGeneres(Number(e.target.value))} // تحويل القيمة إلى رقم
                 id="countries"
-                style={{ scrollbarWidth: "none" }}
-                className="bg-black text-white/80 text-sm rounded-lg py-3 px-2 outline-none"
+                style={{ scrollbarWidth: "none", overflow: "hidden", appearance: "none", }} // إزالة شريط التمرير
+                className="bg-black text-white/80 text-sm rounded-lg py-2 px-2 outline-none"
               >
                 {generes.map((item) => (
                   <option
@@ -127,9 +127,9 @@ const Page: React.FC = () => {
                     value={item.id}
                     className={`${
                       activeId === item.id
-                        ? "text-rose-500 border-b-[2px] border-b-rose-500 shadow-xl "
+                        ? "text-rose-500 border-b-[2px] border-b-rose-500 shadow-xl"
                         : "text-white"
-                    } transition-all p-1 cursor-pointer ease-in-out duration-300 text-xl line-clamp-1 text-center`}
+                    } transition-all p-1 w-[100px] cursor-pointer ease-in-out duration-300 text-sm line-clamp-1 text-center`} // تقليل حجم الخط
                   >
                     {item.name}
                   </option>
@@ -164,7 +164,12 @@ const Page: React.FC = () => {
           <div className="h-full w-full lg:w-[80%]">
             <div className="flex flex-row flex-wrap items-center">
               {gamesData.map((game) => (
-                <Link href={`game/${game.id}`} className="w-[33%] h-[55vh] ">
+                <Link
+                  href={`game/${game.id}`}
+                  className={`${
+                    smallScreen ? "w-[50%] h-[55vh]" : "w-[33%] h-[55vh]"
+                  } `}
+                >
                   <MotionItem
                     initial={{ opacity: 0, y: "-50px" }}
                     animate={{

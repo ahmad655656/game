@@ -27,7 +27,9 @@ const GamesSlider : React.FC<GamesSliderProps> = ({
     } else {
       setSlidesInSmallScreen(4); // 4 سلايد في الشاشة الكبيرة
     }
-
+ if (screenWidth <= 640) {
+      setSlidesInSmallScreen(1); // 2 سلايد في الشاشة الصغيرة
+    }
     // تنظيف المستمع عند إلغاء التركيب
     return () => {
       window.removeEventListener('resize', handleResize);
