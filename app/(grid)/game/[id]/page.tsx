@@ -14,7 +14,7 @@ const page = () => {
   const [game, setGame] = useState<Game>();
   const [screenShots, setScreenShots] = useState<Screenshot[]>();
   const [similar, setSimilar] = useState<SimilarGame[]>();
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(0)
   const [slidesPerView, setSlidesPerView] = useState<number>(0)
 
   useEffect(() => {
