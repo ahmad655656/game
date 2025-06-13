@@ -23,4 +23,4 @@ import { ReactNode } from "react";
      };
      return <div className={`${gridClasses[cols as keyof typeof gridClasses]} relative`}>{children}</div>;
    };
-   
+   export default GridContainer

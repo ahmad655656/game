@@ -1,10 +1,10 @@
 "use client";
 import { MenuIcon } from "lucide-react";
-import GridContainer from "../components/defaults/GridContainer";
 import MaxWidthWrapper from "../components/defaults/MaxWidthWrapper";
 import NavBar from "../components/nav/NavBar";
 import SidBar from "../components/nav/SidBar";
 import { useEffect, useState } from "react";
+import GridContainer from "../components/defaults/GridContainer";
 export default function RootLayout({
   children,
 }: Readonly<{
