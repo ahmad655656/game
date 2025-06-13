@@ -13,16 +13,15 @@ const Page: React.FC = () => {
   const [disablePrev, setDisablePrev] = useState<boolean>(true);
   const [disableNext, setDisableNext] = useState<boolean>(false);
   const [screenWidth, setScreenWidth] = useState(0);
-  const [id, setId] = useState(0);
   const [smallScreen, setSmallScreen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
-      setSmallScreen(window.innerWidth <= 768)
+      setSmallScreen(window.innerWidth <= 768);
     };
     window.addEventListener("resize", handleResize);
-   handleResize() 
-    
+    handleResize();
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   useEffect(() => {
@@ -117,7 +116,7 @@ const Page: React.FC = () => {
                 Select an Generes
               </label>
               <select
-              onChange={(e) => handleGeneres(Number(e.target.value))} // تحويل القيمة إلى رقم
+                onChange={(e) => handleGeneres(Number(e.target.value))} // تحويل القيمة إلى رقم
                 id="countries"
                 style={{ scrollbarWidth: "none" }}
                 className="bg-black text-white/80 text-sm rounded-lg py-3 px-2 outline-none"
@@ -177,12 +176,19 @@ const Page: React.FC = () => {
                     key={game.id}
                   >
                     <div className="relative w-full h-[80%]">
-                      <Image
-                        src={game.background_image}
-                        alt={game.name}
-                        fill
-                        className="object-cover transition-all ease-in-out duration-300 group-hover:opacity-80 rounded-lg"
-                      />
+                      {game.background_image ? (
+                        <Image
+                          src={game.background_image}
+                          alt={game.name}
+                          fill
+                          className="object-cover transition-all ease-in-out duration-300 group-hover:opacity-80 rounded-lg"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                          <span>No Image Available</span>{" "}
+                          {/* رسالة بديلة أو صورة افتراضية */}
+                        </div>
+                      )}
                     </div>
                     <h3 className="text-lg text-white font-semibold line-clamp-1">
                       {game.name}
@@ -208,16 +214,3 @@ const Page: React.FC = () => {
 };
 
 export default Page;
-{
-  /* <h3
-                key={item.id}
-                className={`${
-                  activeId === item.id
-                    ? "text-rose-500 border-b-[2px] border-b-rose-500 shadow-xl "
-                    : "text-white"
-                } transition-all p-1 cursor-pointer ease-in-out duration-300 text-xl line-clamp-1 text-center`}
-                onClick={() => handleGeneres(item.id)}
-              >
-                {item.name}
-              </h3> */
-}

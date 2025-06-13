@@ -29,7 +29,14 @@ interface Game {
   tags: Tag[];
   esrb_rating: EsrbRating | null;
   short_screenshots: Screenshot[];
+  data: GameData
 }
+   interface GameData {
+     background_image: string;
+     name: string;
+     description_raw: string;
+     rating: number;
+   }
 
 interface Rating {
   id: number;
@@ -37,7 +44,13 @@ interface Rating {
   count: number;
   percent: number;
 }
-
+interface GamesSliderProps {
+  title: string;
+  games: Game[];
+  slidesPerView?: number;
+  big?: boolean;
+  description?: string;
+}
 interface AddedByStatus {
   yet: number;
   owned: number;

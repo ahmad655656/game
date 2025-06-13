@@ -4,18 +4,12 @@ import SwiperCards from "./SwiperCards";
 import Image from "next/image";
 import Link from "next/link";
 
-const GamesSlider = ({
+const GamesSlider : React.FC<GamesSliderProps> = ({
   games,
   title,
   slidesPerView,
   big,
   description
-}: {
-  games: Game[];
-  title: string;
-  slidesPerView: number;
-  big: boolean;
-  description?: string
 }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [slidesInSmallScreen, setSlidesInSmallScreen] = useState(0);
@@ -50,6 +44,7 @@ const GamesSlider = ({
         slidesPerView={slidesPerView ? slidesPerView : slidesInSmallScreen}
         items={games.map((game: Game) => {
           return {
+            src: game.background_image || '',
             card: big ? (
               <div className="cursor-pointer rounded-2xl gap-4 w-full p-2 bg-black/40 flex flex-col lg:flex-row items-center group">
                 <div className="lg:w-[55%] w-full flex flex-col items-start gap-2">
@@ -61,23 +56,29 @@ const GamesSlider = ({
                   </p>
                 </div>
                 <div className="lg:w-[45%] w-full h-60 rounded-2xl transition-all after:h-full after:bg-rose-500/60 after:rounded-2xl after:duration-200 overflow-hidden relative">
-                  <Image
+                   {game.background_image ?  <Image
                     className="object-cover group-hover:scale-125 group-hover:rotate-6 duration-200 "
                     fill
                     src={game.background_image}
                     alt={""}
-                  />
+                  /> : <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                          <span>No Image Available</span>{" "}
+                          {/* رسالة بديلة أو صورة افتراضية */}
+                        </div>}
                 </div>
               </div>
             ) : (
               <Link href={`game/${game.id}`} className="cursor-pointer group">
                 <div className="w-full h-96 rounded-2xl hover:w-full after:absolute after:inset-0 after:w-0 hover:after:w-full transition-all after:h-full after:bg-rose-500/60 after:rounded-2xl after:duration-200 overflow-hidden relative">
-                  <Image
+                 {game.background_image ?  <Image
                     className="object-cover group-hover:scale-125 group-hover:rotate-6 duration-200 "
                     fill
                     src={game.background_image}
                     alt={""}
-                  />
+                  /> : <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                          <span>No Image Available</span>{" "}
+                          {/* رسالة بديلة أو صورة افتراضية */}
+                        </div>}
                 </div>
                 <h1 className="mt-2 text-xl line-clamp-1 text-white font-semibold">
                   {game.name}

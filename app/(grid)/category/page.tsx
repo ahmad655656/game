@@ -124,7 +124,7 @@ const Page = () => {
             slidesPerView={3}
             className={`w-full`}
           >
-            {gameFromId?.map((game: object) => {
+            {gameFromId?.map((game: any) => {
               return (
                 <SwiperSlide>
                   <div className="flex h-[50vh] bg-black/60 rounded-lg mb-5 gap-2 shadow-lg hover:shadow-2xl transition-all duration-200 ease-in-out cursor-pointer flex-col items-start">
